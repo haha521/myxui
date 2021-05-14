@@ -55,6 +55,12 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
     public OptionsPickerView(PickerOptions pickerOptions) {
         super(pickerOptions.context);
         mPickerOptions = pickerOptions;
+        initView(pickerOptions.context);
+    }
+
+    private void initView(Context context) {
+        setDialogOutSideCancelable();
+        initViews();
         rootView.setOnKeyListener(new View.OnKeyListener(){
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -71,12 +77,6 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
                 return false;
             }
         });
-        initView(pickerOptions.context);
-    }
-
-    private void initView(Context context) {
-        setDialogOutSideCancelable();
-        initViews();
         initAnim();
         initEvents();
         if (mPickerOptions.customListener == null) {
