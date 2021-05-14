@@ -51,6 +51,9 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
 
+    private Button btnSubmit;
+    private Button btnCancel;
+
 
     public OptionsPickerView(PickerOptions pickerOptions) {
         super(pickerOptions.context);
@@ -75,39 +78,8 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
             LinearLayout llContent = (LinearLayout) findViewById(R.id.ll_content);
 
             //确定和取消按钮
-            final Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
-            final Button btnCancel = (Button) findViewById(R.id.btnCancel);
-
-            rootView.setOnKeyListener(new View.OnKeyListener(){
-                @Override
-                public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                    if(isShowing()){
-                        if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
-                            int[] currentItems = wheelOptions.getCurrentItems();
-                            int size = wheelOptions.mOptions1Items.size();
-                            switch (i) {
-                                case 19://上
-                                    setSelectOptions(currentItems[0]==0?0:currentItems[0]-1);
-                                    System.out.println("sahdjashdjshajdhasjdbasbbbbc");
-                                    break;
-                                case 20://下
-                                    setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
-                                    System.out.println("ashdjashdjashdjashdjashdjashdjasdasd");
-                                    break;
-                                case 21://左
-                                    btnSubmit.requestFocus();
-                                    btnCancel.requestFocusFromTouch();
-                                    break;
-                                case 22://右
-                                    btnCancel.requestFocus();
-                                    btnCancel.requestFocusFromTouch();
-                                    break;
-                            }
-                        }
-                    }
-                    return false;
-                }
-            });
+            btnSubmit = (Button) findViewById(R.id.btnSubmit);
+            btnCancel = (Button) findViewById(R.id.btnCancel);
 
             btnSubmit.setTag(TAG_SUBMIT);
             btnCancel.setTag(TAG_CANCEL);
@@ -162,6 +134,55 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
         wheelOptions.setTextColorOut(mPickerOptions.textColorOut);
         wheelOptions.setTextColorCenter(mPickerOptions.textColorCenter);
         wheelOptions.isCenterLabel(mPickerOptions.isCenterLabel);
+    }
+
+    @Override
+    public void show() {
+        if (isDialog()) {
+            super.showDialog();
+        } else {
+            if (isShowing()) {
+                return;
+            }
+            isShowing = true;
+            rootView.setOnKeyListener(new View.OnKeyListener(){
+                @Override
+                public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                    if(isShowing()){
+                        if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
+                            int[] currentItems = wheelOptions.getCurrentItems();
+                            int size = wheelOptions.mOptions1Items.size();
+                            switch (i) {
+                                case 19://上
+                                    setSelectOptions(currentItems[0]==0?0:currentItems[0]-1);
+                                    System.out.println("sahdjashdjshajdhasjdbasbbbbc");
+                                    break;
+                                case 20://下
+                                    setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
+                                    System.out.println("ashdjashdjashdjashdjashdjashdjasdasd");
+                                    break;
+                                case 21://左
+                                    btnSubmit.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
+                                    break;
+                                case 22://右
+                                    btnCancel.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
+                                    break;
+                                case KeyEvent.KEYCODE_BACK:
+                                    dismiss();
+                                    break;
+                            }
+                        }
+                    }
+                    return false;
+                }
+            });
+            rootView.setFocusable(true);
+            rootView.setFocusableInTouchMode(true);
+            onAttached(rootView);
+            rootView.requestFocus();
+        }
     }
 
     /**

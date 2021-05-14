@@ -61,7 +61,7 @@ public class BasePickerView {
 
     private Animation outAnim;
     private Animation inAnim;
-    private boolean isShowing;
+    protected boolean isShowing;
 
     protected int animGravity = Gravity.BOTTOM;
 
@@ -169,7 +169,7 @@ public class BasePickerView {
      *
      * @param view 这个View
      */
-    private void onAttached(View view) {
+    protected void onAttached(View view) {
         mPickerOptions.decorView.addView(view);
         if (isAnim) {
             contentContainer.startAnimation(inAnim);
@@ -269,13 +269,13 @@ public class BasePickerView {
             View = rootView;
         }
 
-        View.setFocusable(isCancelable);
-        View.setFocusableInTouchMode(isCancelable);
-        if (isCancelable) {
-            View.setOnKeyListener(onKeyBackListener);
-        } else {
-            View.setOnKeyListener(null);
-        }
+//        View.setFocusable(isCancelable);
+//        View.setFocusableInTouchMode(isCancelable);
+//        if (isCancelable) {
+//            View.setOnKeyListener(onKeyBackListener);
+//        } else {
+//            View.setOnKeyListener(null);
+//        }
     }
 
     private View.OnKeyListener onKeyBackListener = new View.OnKeyListener() {
@@ -381,7 +381,7 @@ public class BasePickerView {
         return size.x;
     }
 
-    private void showDialog() {
+    protected void showDialog() {
         if (mDialog != null) {
             mDialog.show();
         }
