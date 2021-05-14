@@ -61,22 +61,6 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
     private void initView(Context context) {
         setDialogOutSideCancelable();
         initViews();
-        rootView.setOnKeyListener(new View.OnKeyListener(){
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
-                    switch (i) {
-                        case 19://上
-                            System.out.println("sahdjashdjshajdhasjdbasbbbbc");
-                        case 20://下
-                            System.out.println("ashdjashdjashdjashdjashdjashdjasdasd");
-                        case 21://左
-                        case 22://右
-                    }
-                }
-                return false;
-            }
-        });
         initAnim();
         initEvents();
         if (mPickerOptions.customListener == null) {
@@ -91,8 +75,39 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
             LinearLayout llContent = (LinearLayout) findViewById(R.id.ll_content);
 
             //确定和取消按钮
-            Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
-            Button btnCancel = (Button) findViewById(R.id.btnCancel);
+            final Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
+            final Button btnCancel = (Button) findViewById(R.id.btnCancel);
+
+            rootView.setOnKeyListener(new View.OnKeyListener(){
+                @Override
+                public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                    if(isShowing()){
+                        if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
+                            int[] currentItems = wheelOptions.getCurrentItems();
+                            int size = wheelOptions.mOptions1Items.size();
+                            switch (i) {
+                                case 19://上
+                                    setSelectOptions(currentItems[0]==0?0:currentItems[0]-1);
+                                    System.out.println("sahdjashdjshajdhasjdbasbbbbc");
+                                    break;
+                                case 20://下
+                                    setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
+                                    System.out.println("ashdjashdjashdjashdjashdjashdjasdasd");
+                                    break;
+                                case 21://左
+                                    btnSubmit.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
+                                    break;
+                                case 22://右
+                                    btnCancel.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
+                                    break;
+                            }
+                        }
+                    }
+                    return false;
+                }
+            });
 
             btnSubmit.setTag(TAG_SUBMIT);
             btnCancel.setTag(TAG_CANCEL);

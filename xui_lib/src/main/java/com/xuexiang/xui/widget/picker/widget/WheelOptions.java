@@ -41,7 +41,7 @@ public class WheelOptions<T> implements HasTypeface {
     private WheelView wvOption2;
     private WheelView wvOption3;
 
-    private List<T> mOptions1Items;
+    public List<T> mOptions1Items;
     private List<List<T>> mOptions2Items;
     private List<List<List<T>>> mOptions3Items;
 
