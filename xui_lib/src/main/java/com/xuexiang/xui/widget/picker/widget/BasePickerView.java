@@ -52,8 +52,8 @@ public class BasePickerView {
 
     private Context context;
     protected ViewGroup contentContainer;
-    private ViewGroup rootView;//附加View 的 根View
-    private ViewGroup dialogView;//附加Dialog 的 根View
+    protected ViewGroup rootView;//附加View 的 根View
+    protected ViewGroup dialogView;//附加Dialog 的 根View
 
     protected PickerOptions mPickerOptions;
     private OnDismissListener onDismissListener;

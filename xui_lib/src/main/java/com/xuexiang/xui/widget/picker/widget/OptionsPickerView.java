@@ -19,6 +19,7 @@ package com.xuexiang.xui.widget.picker.widget;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +55,22 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
     public OptionsPickerView(PickerOptions pickerOptions) {
         super(pickerOptions.context);
         mPickerOptions = pickerOptions;
+        rootView.setOnKeyListener(new View.OnKeyListener(){
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (i) {
+                        case 19://上
+                            System.out.println("sahdjashdjshajdhasjdbasbbbbc");
+                        case 20://下
+                            System.out.println("ashdjashdjashdjashdjashdjashdjasdasd");
+                        case 21://左
+                        case 22://右
+                    }
+                }
+                return false;
+            }
+        });
         initView(pickerOptions.context);
     }
 
