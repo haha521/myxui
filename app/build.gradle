@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.xuexiang.xaop' //引用xaop插件
+apply plugin: 'com.xuexiang.xrouter' //引用xrouter-plugin插件实现自动注册
+apply plugin: 'img-optimizer'
+if (isNeedPackage.toBoolean() && isUseBooster.toBoolean()) {
+    apply plugin: 'com.didiglobal.booster'
+}
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "com.xuexiang.xuidemo"
+        minSdkVersion 17
+        targetSdkVersion build_versions.target_sdk
+        versionCode 18
+        versionName "1.1.7"
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        }
+    }
+
+    if (isNeedPackage.toBoolean()) {
+        signingConfigs {
+            release {
+                storeFile file(app_release.storeFile)
+                storePassword app_release.storePassword
+                keyAlias app_release.keyAlias
+                keyPassword app_release.keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (isNeedPackage.toBoolean()) {
+                signingConfig signingConfigs.release
+
+                Properties properties = new Properties()
+                properties.load(project.rootProject.file('local.properties').newDataInputStream())
+                buildConfigField "String", "APP_ID_BUGLY", properties.getProperty("APP_ID_BUGLY")
+                buildConfigField "String", "APP_ID_UMENG", properties.getProperty("APP_ID_UMENG")
+            }
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+
+            buildConfigField "String", "APP_ID_BUGLY", '""'
+            buildConfigField "String", "APP_ID_UMENG", '""'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.androidx.multidex
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    //下拉刷新、CityPicker、XUI框架需要
+//    implementation deps.androidx.appcompat
+//    implementation deps.androidx.recyclerview
+//    implementation deps.androidx.design
+//    implementation deps.glide
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    //XUI框架
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.6'
+//    implementation 'com.qmuiteam:qmui:1.2.0'
+}
