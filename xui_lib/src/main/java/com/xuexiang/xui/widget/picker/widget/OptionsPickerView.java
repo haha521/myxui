@@ -92,8 +92,8 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
             tvTitle.setText(TextUtils.isEmpty(mPickerOptions.textContentTitle) ? "" : mPickerOptions.textContentTitle);//默认为空
 
             //设置color
-//            btnSubmit.setTextColor(mPickerOptions.textColorConfirm);
-//            btnCancel.setTextColor(mPickerOptions.textColorCancel);
+            btnSubmit.setTextColor(mPickerOptions.textColorConfirm);
+            btnCancel.setTextColor(mPickerOptions.textColorCancel);
             tvTitle.setTextColor(mPickerOptions.textColorTitle);
             if (isDialog()) {
                 if (TextUtils.isEmpty(tvTitle.getText().toString())) {
@@ -160,12 +160,20 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
                                     setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
                                     break;
                                 case 21://左
-                                    btnSubmit.requestFocus();
-                                    btnCancel.requestFocusFromTouch();
+                                    if(!rootView.hasFocus()){
+                                        rootView.requestFocus();
+                                    }else {
+                                        btnCancel.requestFocus();
+                                        btnCancel.requestFocusFromTouch();
+                                    }
                                     break;
                                 case 22://右
-                                    btnCancel.requestFocus();
-                                    btnCancel.requestFocusFromTouch();
+                                    if(!rootView.hasFocus()){
+                                        rootView.requestFocus();
+                                    }else {
+                                        btnSubmit.requestFocus();
+                                        btnSubmit.requestFocusFromTouch();
+                                    }
                                     break;
                                 case KeyEvent.KEYCODE_BACK:
                                     dismiss();

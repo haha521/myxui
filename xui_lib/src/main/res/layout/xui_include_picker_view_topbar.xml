@@ -27,7 +27,7 @@
         android:gravity="start|center_vertical"
         android:paddingStart="@dimen/picker_view_topbar_padding"
         android:text="@string/xui_picker_view_cancel"
-        android:textColor="?attr/colorAccent"
+        android:textColor="@drawable/text_select"
         android:textSize="?attr/md_button_textsize" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:gravity="end|center_vertical"
         android:paddingEnd="@dimen/picker_view_topbar_padding"
         android:text="@string/xui_picker_view_submit"
-        android:textColor="?attr/colorAccent"
+        android:textColor="@drawable/text_select"
         android:textSize="?attr/md_button_textsize" />
 
 </RelativeLayout>
