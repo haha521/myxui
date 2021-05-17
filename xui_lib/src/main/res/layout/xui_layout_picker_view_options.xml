@@ -33,18 +33,21 @@
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/options1"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/options2"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/options3"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />

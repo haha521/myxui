@@ -154,26 +154,24 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
                             int size = wheelOptions.mOptions1Items.size();
                             switch (i) {
                                 case 19://上
+                                    System.out.println("上");
+                                    rootView.requestFocus();
                                     setSelectOptions(currentItems[0]==0?0:currentItems[0]-1);
                                     break;
                                 case 20://下
+                                    System.out.println("下");
+                                    rootView.requestFocus();
                                     setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
                                     break;
                                 case 21://左
-                                    if(btnCancel.hasFocus()){
-                                        rootView.requestFocus();
-                                    }else {
-                                        btnCancel.requestFocus();
-                                        btnCancel.requestFocusFromTouch();
-                                    }
+                                    System.out.println("左");
+                                    btnCancel.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
                                     break;
                                 case 22://右
-                                    if(btnSubmit.hasFocus()){
-                                        rootView.requestFocus();
-                                    }else {
-                                        btnSubmit.requestFocus();
-                                        btnSubmit.requestFocusFromTouch();
-                                    }
+                                    System.out.println("右");
+                                    btnSubmit.requestFocus();
+                                    btnSubmit.requestFocusFromTouch();
                                     break;
                                 case KeyEvent.KEYCODE_BACK:
                                     dismiss();
