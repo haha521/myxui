@@ -83,6 +83,7 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
 
             btnSubmit.setTag(TAG_SUBMIT);
             btnCancel.setTag(TAG_CANCEL);
+
             btnSubmit.setOnClickListener(this);
             btnCancel.setOnClickListener(this);
 
@@ -162,6 +163,76 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
                                     System.out.println("下");
                                     rootView.requestFocus();
                                     setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
+                                    break;
+                                case 21://左
+                                    System.out.println("左");
+                                    btnCancel.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
+                                    break;
+                                case 22://右
+                                    System.out.println("右");
+                                    btnSubmit.requestFocus();
+                                    btnSubmit.requestFocusFromTouch();
+                                    break;
+                                case KeyEvent.KEYCODE_BACK:
+                                    dismiss();
+                                    break;
+                            }
+                        }
+                    }
+                    return false;
+                }
+            });
+            btnSubmit.setOnKeyListener(new View.OnKeyListener(){
+                @Override
+                public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                    if(isShowing()){
+                        if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
+                            int[] currentItems = wheelOptions.getCurrentItems();
+                            int size = wheelOptions.mOptions1Items.size();
+                            switch (i) {
+                                case 19://上
+                                    System.out.println("上");
+                                    rootView.requestFocus();
+                                    break;
+                                case 20://下
+                                    System.out.println("下");
+                                    rootView.requestFocus();
+                                    break;
+                                case 21://左
+                                    System.out.println("左");
+                                    btnCancel.requestFocus();
+                                    btnCancel.requestFocusFromTouch();
+                                    break;
+                                case 22://右
+                                    System.out.println("右");
+                                    btnSubmit.requestFocus();
+                                    btnSubmit.requestFocusFromTouch();
+                                    break;
+                                case KeyEvent.KEYCODE_BACK:
+                                    dismiss();
+                                    break;
+                            }
+                        }
+                    }
+                    return false;
+                }
+            });
+            btnCancel.setOnKeyListener(new View.OnKeyListener(){
+                @Override
+                public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                    if(isShowing()){
+                        if(keyEvent.getAction()==KeyEvent.ACTION_DOWN){
+                            int[] currentItems = wheelOptions.getCurrentItems();
+                            int size = wheelOptions.mOptions1Items.size();
+                            switch (i) {
+                                case 19://上
+                                    System.out.println("上");
+                                    rootView.requestFocus();
+                                    break;
+                                case 20://下
+                                    System.out.println("下");
+                                    rootView.requestFocus();
                                     break;
                                 case 21://左
                                     System.out.println("左");
