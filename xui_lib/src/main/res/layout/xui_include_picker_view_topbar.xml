@@ -38,6 +38,7 @@
         android:layout_toStartOf="@+id/btnSubmit"
         android:layout_toEndOf="@+id/btnCancel"
         android:gravity="center"
+        android:focusable="false"
         android:textColor="?attr/xui_config_color_title_text"
         android:textSize="?attr/xui_config_size_title_text" />
 
