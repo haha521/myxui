@@ -84,6 +84,12 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
             btnSubmit.setTag(TAG_SUBMIT);
             btnCancel.setTag(TAG_CANCEL);
 
+            btnCancel.setNextFocusDownId(R.id.outmost_container);
+            btnCancel.setNextFocusUpId(R.id.outmost_container);
+
+            btnSubmit.setNextFocusDownId(R.id.outmost_container);
+            btnSubmit.setNextFocusUpId(R.id.outmost_container);
+
             btnSubmit.setOnClickListener(this);
             btnCancel.setOnClickListener(this);
 
@@ -158,12 +164,12 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
                                     System.out.println("上");
                                     rootView.requestFocus();
                                     setSelectOptions(currentItems[0]==0?0:currentItems[0]-1);
-                                    break;
+                                    return true;
                                 case 20://下
                                     System.out.println("下");
                                     rootView.requestFocus();
                                     setSelectOptions(currentItems[0]==size?size:currentItems[0]+1);
-                                    break;
+                                    return true;
                                 case 21://左
                                     System.out.println("左");
                                     btnCancel.requestFocus();
