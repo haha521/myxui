@@ -681,7 +681,8 @@ public class WheelView extends View implements HasTypeface {
         float top = -initPosition * itemHeight;
         float bottom = (adapter.getItemsCount() - 1 - initPosition) * itemHeight;
         float ratio = 0.25f;
-
+        requestFocus();
+        requestFocusFromTouch();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startTime = System.currentTimeMillis();
