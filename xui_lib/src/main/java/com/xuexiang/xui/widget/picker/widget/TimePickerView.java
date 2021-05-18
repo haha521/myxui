@@ -178,6 +178,12 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         setTime();
     }
 
+    @Override
+    public void show() {
+        super.show();
+        wheelTime.getWv_year().requestFocus();
+    }
+
     /**
      * 设置可以选择的时间范围, 要在setTime之前调用才有效果
      */

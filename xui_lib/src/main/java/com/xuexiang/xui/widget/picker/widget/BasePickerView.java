@@ -159,7 +159,6 @@ public class BasePickerView {
             }
             isShowing = true;
             onAttached(rootView);
-            rootView.requestFocus();
         }
     }
 

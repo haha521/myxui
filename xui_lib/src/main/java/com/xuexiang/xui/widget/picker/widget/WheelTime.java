@@ -112,6 +112,14 @@ public class WheelTime {
         }
     }
 
+    public WheelView getWv_year() {
+        return wv_year;
+    }
+
+    public void setWv_year(WheelView wv_year) {
+        this.wv_year = wv_year;
+    }
+
     /**
      * 设置农历
      *
@@ -289,12 +297,14 @@ public class WheelTime {
                 if(event.getAction()==KeyEvent.ACTION_DOWN){
                     switch (keyCode) {
                         case 19://上
+                            wv_year.requestFocus();
                             System.out.println("上");
                             if(wv_year.getCurrentItem() + startYear > startYear){
                                 wv_year.setCurrentItem(wv_year.getCurrentItem()-1);
                             }
                             break;
                         case 20://下
+                            wv_year.requestFocus();
                             System.out.println("下");
                             if(endYear > wv_year.getCurrentItem()+startYear){
                                 wv_year.setCurrentItem(wv_year.getCurrentItem()+1);
@@ -339,12 +349,14 @@ public class WheelTime {
                 if(event.getAction()==KeyEvent.ACTION_DOWN){
                     switch (keyCode) {
                         case 19://上
+                            wv_month.requestFocus();
                             System.out.println("上");
                             if(wv_month.getCurrentItem()+1>startMonth){
                                 wv_month.setCurrentItem(wv_month.getCurrentItem()-1);
                             }
                             break;
                         case 20://下
+                            wv_month.requestFocus();
                             System.out.println("下");
                             if(wv_month.getCurrentItem()+1<endMonth){
                                 wv_month.setCurrentItem(wv_month.getCurrentItem()+1);
@@ -468,12 +480,14 @@ public class WheelTime {
                 if(event.getAction()==KeyEvent.ACTION_DOWN){
                     switch (keyCode) {
                         case 19://上
+                            wv_day.requestFocus();
                             System.out.println("上");
                             if(wv_day.getCurrentItem()+1>startDay){
                                 wv_day.setCurrentItem(wv_day.getCurrentItem()-1);
                             }
                             break;
                         case 20://下
+                            wv_day.requestFocus();
                             System.out.println("下");
                             if(wv_day.getCurrentItem()+1<endDay){
                                 wv_day.setCurrentItem(wv_day.getCurrentItem()+1);
@@ -505,12 +519,14 @@ public class WheelTime {
                 if(event.getAction()==KeyEvent.ACTION_DOWN){
                     switch (keyCode) {
                         case 19://上
+                            wv_hours.requestFocus();
                             System.out.println("上");
                             if(wv_hours.getCurrentItem()>0){
                                 wv_hours.setCurrentItem(wv_hours.getCurrentItem()-1);
                             }
                             break;
                         case 20://下
+                            wv_hours.requestFocus();
                             System.out.println("下");
                             if(wv_hours.getCurrentItem()<23){
                                 wv_hours.setCurrentItem(wv_hours.getCurrentItem()+1);
@@ -544,12 +560,14 @@ public class WheelTime {
                 if(event.getAction()==KeyEvent.ACTION_DOWN){
                     switch (keyCode) {
                         case 19://上
+                            wv_minutes.requestFocus();
                             System.out.println("上");
                             if(wv_minutes.getCurrentItem()>0){
                                 wv_minutes.setCurrentItem(wv_minutes.getCurrentItem()-1);
                             }
                             break;
                         case 20://下
+                            wv_minutes.requestFocus();
                             System.out.println("下");
                             if(wv_minutes.getCurrentItem()<59){
                                 wv_minutes.setCurrentItem(wv_minutes.getCurrentItem()+1);
@@ -583,12 +601,14 @@ public class WheelTime {
                 if(event.getAction()==KeyEvent.ACTION_DOWN){
                     switch (keyCode) {
                         case 19://上
+                            wv_seconds.requestFocus();
                             System.out.println("上");
                             if(wv_seconds.getCurrentItem()>0){
                                 wv_seconds.setCurrentItem(wv_seconds.getCurrentItem()-1);
                             }
                             break;
                         case 20://下
+                            wv_seconds.requestFocus();
                             System.out.println("下");
                             if(wv_seconds.getCurrentItem()<59){
                                 wv_seconds.setCurrentItem(wv_seconds.getCurrentItem()+1);
