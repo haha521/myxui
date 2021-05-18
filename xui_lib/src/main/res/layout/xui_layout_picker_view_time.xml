@@ -36,6 +36,7 @@
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/year"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:nextFocusLeft="@+id/btnCancel"
             android:background="@drawable/back_focus_style"
             android:layout_width="match_parent"
@@ -45,6 +46,7 @@
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/month"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
@@ -53,6 +55,7 @@
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/day"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:nextFocusRight="@+id/btnSubmit"
             android:background="@drawable/back_focus_style"
@@ -62,6 +65,7 @@
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/hour"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
@@ -70,6 +74,7 @@
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/min"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"

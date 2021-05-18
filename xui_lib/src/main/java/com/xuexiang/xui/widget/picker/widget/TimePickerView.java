@@ -182,6 +182,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     public void show() {
         super.show();
         wheelTime.getWv_year().requestFocus();
+        wheelTime.getWv_year().requestFocusFromTouch();
     }
 
     /**
