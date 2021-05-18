@@ -633,6 +633,8 @@ public class WheelTime {
         wv_year.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(int index) {
+                wv_year.requestFocus();
+                wv_year.requestFocusFromTouch();
                 int year_num = index + startYear;
                 currentYear = year_num;
                 int currentMonthItem = wv_month.getCurrentItem();//记录上一次的item位置
@@ -712,8 +714,9 @@ public class WheelTime {
         wv_month.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(int index) {
+                wv_month.requestFocus();
+                wv_month.requestFocusFromTouch();
                 int month_num = index + 1;
-
                 if (startYear == endYear) {
                     month_num = month_num + startMonth - 1;
                     if (startMonth == endMonth) {
@@ -775,6 +778,8 @@ public class WheelTime {
     }
 
     private void setChangedListener(WheelView wheelView) {
+        wheelView.requestFocus();
+        wheelView.requestFocusFromTouch();
         if (mSelectChangeCallback != null) {
             wheelView.setOnItemSelectedListener(new OnItemSelectedListener() {
                 @Override

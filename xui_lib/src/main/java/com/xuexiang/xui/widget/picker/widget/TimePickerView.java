@@ -73,6 +73,13 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             btnSubmit.setTag(TAG_SUBMIT);
             btnCancel.setTag(TAG_CANCEL);
 
+            btnCancel.setNextFocusDownId(R.id.year);
+            btnCancel.setNextFocusUpId(R.id.year);
+
+            btnSubmit.setNextFocusDownId(R.id.day);
+            btnSubmit.setNextFocusUpId(R.id.day);
+
+
             btnSubmit.setOnClickListener(this);
             btnCancel.setOnClickListener(this);
 
