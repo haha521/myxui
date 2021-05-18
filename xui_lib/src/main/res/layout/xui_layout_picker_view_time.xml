@@ -35,37 +35,49 @@
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/year"
+            android:focusable="true"
+            android:background="@drawable/back_focus_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.95" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/month"
+            android:focusable="true"
             android:layout_width="match_parent"
+            android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/day"
+            android:focusable="true"
             android:layout_width="match_parent"
+            android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/hour"
+            android:focusable="true"
             android:layout_width="match_parent"
+            android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/min"
+            android:focusable="true"
             android:layout_width="match_parent"
+            android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/second"
+            android:focusable="true"
             android:layout_width="match_parent"
+            android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>

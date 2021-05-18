@@ -16,6 +16,7 @@
 
 package com.xuexiang.xui.widget.picker.widget;
 
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.xuexiang.xui.R;
@@ -279,10 +280,41 @@ public class WheelTime {
         // 年
         wv_year = view.findViewById(R.id.year);
         wv_year.setAdapter(new NumericWheelAdapter(startYear, endYear));// 设置"年"的显示数据
-
-
         wv_year.setCurrentItem(year - startYear);// 初始化时显示的数据
         wv_year.setGravity(gravity);
+
+        wv_year.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (keyCode) {
+                        case 19://上
+                            System.out.println("上");
+                            if(wv_year.getCurrentItem() + startYear > startYear){
+                                wv_year.setCurrentItem(wv_year.getCurrentItem()-1);
+                            }
+                            break;
+                        case 20://下
+                            System.out.println("下");
+                            if(endYear > wv_year.getCurrentItem()+startYear){
+                                wv_year.setCurrentItem(wv_year.getCurrentItem()+1);
+                            }
+                            break;
+                        case 21://左
+                            System.out.println("左");
+                            break;
+                        case 22://右
+                            System.out.println("右");
+                            break;
+                        case KeyEvent.KEYCODE_BACK:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+
         // 月
         wv_month = view.findViewById(R.id.month);
         if (startYear == endYear) {//开始年等于终止年
@@ -301,6 +333,38 @@ public class WheelTime {
             wv_month.setCurrentItem(month);
         }
         wv_month.setGravity(gravity);
+        wv_month.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (keyCode) {
+                        case 19://上
+                            System.out.println("上");
+                            if(wv_month.getCurrentItem()+1>startMonth){
+                                wv_month.setCurrentItem(wv_month.getCurrentItem()-1);
+                            }
+                            break;
+                        case 20://下
+                            System.out.println("下");
+                            if(wv_month.getCurrentItem()+1<endMonth){
+                                wv_month.setCurrentItem(wv_month.getCurrentItem()+1);
+                            }
+                            break;
+                        case 21://左
+                            System.out.println("左");
+                            break;
+                        case 22://右
+                            System.out.println("右");
+                            break;
+                        case KeyEvent.KEYCODE_BACK:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+
         // 日
         wv_day = view.findViewById(R.id.day);
 
@@ -398,24 +462,152 @@ public class WheelTime {
         }
 
         wv_day.setGravity(gravity);
+        wv_day.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (keyCode) {
+                        case 19://上
+                            System.out.println("上");
+                            if(wv_day.getCurrentItem()+1>startDay){
+                                wv_day.setCurrentItem(wv_day.getCurrentItem()-1);
+                            }
+                            break;
+                        case 20://下
+                            System.out.println("下");
+                            if(wv_day.getCurrentItem()+1<endDay){
+                                wv_day.setCurrentItem(wv_day.getCurrentItem()+1);
+                            }
+                            break;
+                        case 21://左
+                            System.out.println("左");
+                            break;
+                        case 22://右
+                            System.out.println("右");
+                            break;
+                        case KeyEvent.KEYCODE_BACK:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
         //时
         wv_hours = view.findViewById(R.id.hour);
         wv_hours.setAdapter(new NumericWheelAdapter(0, 23));
 
         wv_hours.setCurrentItem(h);
         wv_hours.setGravity(gravity);
+        wv_hours.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (keyCode) {
+                        case 19://上
+                            System.out.println("上");
+                            if(wv_hours.getCurrentItem()>0){
+                                wv_hours.setCurrentItem(wv_hours.getCurrentItem()-1);
+                            }
+                            break;
+                        case 20://下
+                            System.out.println("下");
+                            if(wv_hours.getCurrentItem()<23){
+                                wv_hours.setCurrentItem(wv_hours.getCurrentItem()+1);
+                            }
+                            break;
+                        case 21://左
+                            System.out.println("左");
+                            break;
+                        case 22://右
+                            System.out.println("右");
+                            break;
+                        case KeyEvent.KEYCODE_BACK:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
         //分
         wv_minutes = view.findViewById(R.id.min);
         wv_minutes.setAdapter(new NumericWheelAdapter(0, 59));
 
         wv_minutes.setCurrentItem(m);
         wv_minutes.setGravity(gravity);
+        wv_minutes.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (keyCode) {
+                        case 19://上
+                            System.out.println("上");
+                            if(wv_minutes.getCurrentItem()>0){
+                                wv_minutes.setCurrentItem(wv_minutes.getCurrentItem()-1);
+                            }
+                            break;
+                        case 20://下
+                            System.out.println("下");
+                            if(wv_minutes.getCurrentItem()<59){
+                                wv_minutes.setCurrentItem(wv_minutes.getCurrentItem()+1);
+                            }
+                            break;
+                        case 21://左
+                            System.out.println("左");
+                            break;
+                        case 22://右
+                            System.out.println("右");
+                            break;
+                        case KeyEvent.KEYCODE_BACK:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
         //秒
         wv_seconds = view.findViewById(R.id.second);
         wv_seconds.setAdapter(new NumericWheelAdapter(0, 59));
 
         wv_seconds.setCurrentItem(s);
         wv_seconds.setGravity(gravity);
+        wv_seconds.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction()==KeyEvent.ACTION_DOWN){
+                    switch (keyCode) {
+                        case 19://上
+                            System.out.println("上");
+                            if(wv_seconds.getCurrentItem()>0){
+                                wv_seconds.setCurrentItem(wv_seconds.getCurrentItem()-1);
+                            }
+                            break;
+                        case 20://下
+                            System.out.println("下");
+                            if(wv_seconds.getCurrentItem()<59){
+                                wv_seconds.setCurrentItem(wv_seconds.getCurrentItem()+1);
+                            }
+                            break;
+                        case 21://左
+                            System.out.println("左");
+                            break;
+                        case 22://右
+                            System.out.println("右");
+                            break;
+                        case KeyEvent.KEYCODE_BACK:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
 
         // 添加"年"监听
         wv_year.setOnItemSelectedListener(new OnItemSelectedListener() {
