@@ -20,6 +20,7 @@
     android:layout_height="match_parent"
     android:background="@color/picker_view_bg_color_overlay"
     android:clickable="true"
+    android:descendantFocusability="afterDescendants"
     android:focusable="true">
 
     <FrameLayout

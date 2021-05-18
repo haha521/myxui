@@ -36,6 +36,7 @@
         <com.xuexiang.xui.widget.picker.wheelview.WheelView
             android:id="@+id/year"
             android:focusable="true"
+            android:nextFocusLeft="@+id/btnCancel"
             android:background="@drawable/back_focus_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
             android:id="@+id/day"
             android:focusable="true"
             android:layout_width="match_parent"
+            android:nextFocusRight="@+id/btnSubmit"
             android:background="@drawable/back_focus_style"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
